@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferretería y Pinturería Gallego — Registro</title>
+  <link rel="stylesheet" href="styles.css?v=1" />
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">🧰 Ferretería y Pinturería Gallego</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <div class="dropdown mega">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Categorías</button>
+        <div class="dropdown-menu mega-menu" role="menu">
+          <div class="mega-col"><h3>Agua y Plomería</h3><a href="categoria-agua.html">Caños y conexiones</a><a href="categoria-agua.html">Grifería</a><a href="categoria-agua.html">Bombas y válvulas</a></div>
+          <div class="mega-col"><h3>Pintura</h3><a href="categoria-pintura.html">Pinturas y esmaltes</a><a href="categoria-pintura.html">Rodillos y pinceles</a><a href="categoria-pintura.html">Preparación y diluyentes</a></div>
+          <div class="mega-col"><h3>Herramientas</h3><a href="categoria-herramientas-manuales.html">Manuales</a><a href="categoria-herramientas-electricas.html">Eléctricas</a><a href="categoria-herramientas-electricas.html">Accesorios</a></div>
+          <div class="mega-col"><h3>Electricidad</h3><a href="categoria-electricidad-iluminacion.html">Cables y tableros</a><a href="categoria-electricidad-iluminacion.html">Tomas y llaves</a><a href="categoria-electricidad-iluminacion.html">Iluminación LED</a></div>
+          <div class="mega-col"><h3>Cerrajería</h3><a href="categoria-cerrajeria-herrajes.html">Cerraduras y cilindros</a><a href="categoria-cerrajeria-herrajes.html">Bisagras y pasadores</a><a href="categoria-cerrajeria-herrajes.html">Herrajes</a></div>
+          <div class="mega-col"><h3>Tornillería</h3><a href="categoria-tornilleria-fijaciones.html">Tornillos</a><a href="categoria-tornilleria-fijaciones.html">Tarugos y anclajes</a><a href="categoria-tornilleria-fijaciones.html">Arandelas y tuercas</a></div>
+          <div class="mega-col"><h3>Adhesivos</h3><a href="categoria-adhesivos-selladores.html">Pegamentos</a><a href="categoria-adhesivos-selladores.html">Siliconas y selladores</a><a href="categoria-adhesivos-selladores.html">Espumas PU</a></div>
+          <div class="mega-col"><h3>Seguridad</h3><a href="categoria-seguridad-higiene.html">EPP</a><a href="categoria-seguridad-higiene.html">Señalética</a><a href="categoria-seguridad-higiene.html">Extintores</a></div>
+          <div class="mega-col"><h3>Jardinería</h3><a href="categoria-jardineria.html">Mangueras y riego</a><a href="categoria-jardineria.html">Herramientas de jardín</a><a href="categoria-jardineria.html">Césped y poda</a></div>
+          <div class="mega-col"><h3>Construcción</h3><a href="categoria-construccion.html">Líneas de obra</a><a href="categoria-construccion.html">Cortes y abrasivos</a><a href="categoria-construccion.html">Niveles y medición</a></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn" href="login.html">Logout</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Crear cuenta</h1>
+    <form class="form" action="#" method="post" novalidate>
+      <div class="grid-2">
+        <label>Nombre<input type="text" name="nombre" required /></label>
+        <label>Apellido<input type="text" name="apellido" required /></label>
+      </div>
+      <label>Email<input type="email" name="email" placeholder="tu@mail.com" required /></label>
+      <label>Contraseña<input type="password" name="password" placeholder="mín. 6 caracteres" minlength="6" required /></label>
+      <label>Fecha de nacimiento<input type="date" name="nacimiento" required /></label>
+      <button class="btn primary" type="submit">Registrarme</button>
+      <p class="meta">¿Ya tenés cuenta? <a href="login.html">Iniciá sesión</a></p>
+    </form>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener('click', (e) => {
+      const dd = e.target.closest('.dropdown');
+      document.querySelectorAll('.dropdown').forEach(d => {
+        const open = d === dd && !d.classList.contains('open');
+        d.classList.toggle('open', open);
+        const btn = d.querySelector('.dropbtn');
+        if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+  </script>
+</body>
+</html>

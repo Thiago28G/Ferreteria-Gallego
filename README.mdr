@@ -1,0 +1,17 @@
+# Ferretería y Pinturería Gallego — Etapa 1
+
+**Alumno/a:** [Thiago Gallego Delfino]
+
+## Estructura
+- `index.html` (home con navbar, icono, logout y categorías)
+- `login.html` (form email + contraseña)
+- `register.html` (form nombre, apellido, email, contraseña, fecha de nacimiento)
+- `styles.css` (estilos comunes)
+- `categoria-*.html` (una por categoría, con mismo navbar)
+
+## Cómo abrir
+Abrir `index.html` en el navegador.
+
+## Notas
+- Navegación entre categorías desde el navbar.
+- Formularios con validación HTML5 básica.

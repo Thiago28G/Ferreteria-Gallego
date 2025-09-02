@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferretería y Pinturería Gallego — Herramientas Eléctricas</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .catalogo { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:1rem; }
+    .prod { background:var(--card); border:1px solid #ddd; border-radius:1rem; padding:1rem; display:flex; gap:.75rem; flex-direction:column; }
+    .prod h3 { margin:.25rem 0; font-size:1.05rem; }
+    .meta { color:var(--muted); font-size:.9rem; line-height:1.2; }
+    .price { font-weight:700; }
+    .sku { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:.85rem; color:var(--muted); }
+    .actions { display:flex; gap:.5rem; align-items:center; }
+    .qty { width:64px; padding:.4rem .5rem; border-radius:.5rem; border:1px solid #ccc; }
+    .pill { background:rgba(255,255,255,.12); padding:.2rem .45rem; border-radius:999px; font-size:.8rem; color:#fff; }
+    .cart-indicator { margin-left:.5rem; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html" aria-label="Inicio">🧰 Ferretería y Pinturería Gallego</a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown mega">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Categorías</button>
+        <div class="dropdown-menu mega-menu" role="menu">
+          <div class="mega-col"><h3>Agua y Plomería</h3><a href="categoria-agua.html">Caños y conexiones</a><a href="categoria-agua.html">Grifería</a><a href="categoria-agua.html">Bombas y válvulas</a></div>
+          <div class="mega-col"><h3>Pintura</h3><a href="categoria-pintura.html">Pinturas y esmaltes</a><a href="categoria-pintura.html">Rodillos y pinceles</a><a href="categoria-pintura.html">Preparación y diluyentes</a></div>
+          <div class="mega-col"><h3>Herramientas</h3><a href="categoria-herramientas-manuales.html">Manuales</a><a href="categoria-herramientas-electricas.html">Eléctricas</a><a href="categoria-herramientas-electricas.html">Accesorios</a></div>
+          <div class="mega-col"><h3>Electricidad</h3><a href="categoria-electricidad-iluminacion.html">Cables y tableros</a><a href="categoria-electricidad-iluminacion.html">Tomas y llaves</a><a href="categoria-electricidad-iluminacion.html">Iluminación LED</a></div>
+          <div class="mega-col"><h3>Cerrajería</h3><a href="categoria-cerrajeria-herrajes.html">Cerraduras y cilindros</a><a href="categoria-cerrajeria-herrajes.html">Bisagras y pasadores</a><a href="categoria-cerrajeria-herrajes.html">Herrajes</a></div>
+          <div class="mega-col"><h3>Tornillería</h3><a href="categoria-tornilleria-fijaciones.html">Tornillos</a><a href="categoria-tornilleria-fijaciones.html">Tarugos y anclajes</a><a href="categoria-tornilleria-fijaciones.html">Arandelas y tuercas</a></div>
+          <div class="mega-col"><h3>Adhesivos</h3><a href="categoria-adhesivos-selladores.html">Pegamentos</a><a href="categoria-adhesivos-selladores.html">Siliconas y selladores</a><a href="categoria-adhesivos-selladores.html">Espumas PU</a></div>
+          <div class="mega-col"><h3>Seguridad</h3><a href="categoria-seguridad-higiene.html">EPP</a><a href="categoria-seguridad-higiene.html">Señalética</a><a href="categoria-seguridad-higiene.html">Extintores</a></div>
+          <div class="mega-col"><h3>Jardinería</h3><a href="categoria-jardineria.html">Mangueras y riego</a><a href="categoria-jardineria.html">Herramientas de jardín</a><a href="categoria-jardineria.html">Césped y poda</a></div>
+          <div class="mega-col"><h3>Construcción</h3><a href="categoria-construccion.html">Líneas de obra</a><a href="categoria-construccion.html">Cortes y abrasivos</a><a href="categoria-construccion.html">Niveles y medición</a></div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn" href="login.html">Logout</a>
+      <span class="pill cart-indicator" id="cartCount">0</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Herramientas Eléctricas</h1>
+    <p class="meta">Taladros, amoladoras, sierras, lijadoras y accesorios.</p>
+
+    <section class="catalogo" id="catalogo"></section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.addEventListener('click', (e) => {
+      const dd = e.target.closest('.dropdown');
+      document.querySelectorAll('.dropdown').forEach(d => {
+        const open = d === dd && !d.classList.contains('open');
+        d.classList.toggle('open', open);
+        const btn = d.querySelector('.dropbtn');
+        if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+
+    const CATEGORY_ID = "herramientas-electricas";
+    const PRODUCTS = [
+      { id:"HE-001", nombre:"Taladro percutor 13 mm 750W", medida:"13 mm · 750 W", marca:"Bosch", precio: 64990, stock:true },
+      { id:"HE-002", nombre:"Atornillador/Driver 12V con batería", medida:"12 V", marca:"Makita", precio: 89990, stock:true },
+      { id:"HE-003", nombre:"Amoladora angular 4 1/2\" 850W", medida:"115 mm · 850 W", marca:"DeWalt", precio: 71990, stock:true },
+      { id:"HE-004", nombre:"Sierra circular 7 1/4\" 1400W", medida:"184 mm · 1400 W", marca:"Black+Decker", precio: 99990, stock:true },
+      { id:"HE-005", nombre:"Lijadora orbital 1/4 hoja 230W", medida:"230 W", marca:"Stanley", precio: 42990, stock:true },
+      { id:"HE-006", nombre:"Sierra caladora 650W", medida:"650 W", marca:"Skil", precio: 49990, stock:true },
+      { id:"HE-007", nombre:"Multiherramienta oscilante 300W", medida:"300 W", marca:"Dremel", precio: 59990, stock:true },
+      { id:"HE-008", nombre:"Disco corte metal 4 1/2\"", medida:"115 mm", marca:"Norton", precio: 1590, stock:true },
+      { id:"HE-009", nombre:"Mecha acero rápido set x 5", medida:"Ø 3–8 mm", marca:"Bosch", precio: 6990, stock:true },
+      { id:"HE-010", nombre:"Cargador rápido 12V/18V", medida:"—", marca:"Makita", precio: 34990, stock:true },
+      { id:"HE-011", nombre:"Batería 18V 4.0Ah", medida:"18 V 4Ah", marca:"Makita", precio: 79990, stock:true }
+    ];
+
+    function money(n){ return new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS', maximumFractionDigits:0}).format(n); }
+
+    function renderCatalog() {
+      const el = document.getElementById('catalogo');
+      el.innerHTML = PRODUCTS.map(p => `
+        <article class="prod">
+          <div class="sku">SKU: ${p.id}</div>
+          <h3>${p.nombre}</h3>
+          <div class="meta">${p.marca}${p.medida ? " · " + p.medida : ""}</div>
+          <div class="price">${money(p.precio)}</div>
+          <div class="actions">
+            <input class="qty" type="number" min="1" value="1" aria-label="Cantidad" />
+            <button class="btn primary" data-sku="${p.id}">Agregar</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function getCart() {
+      try { return JSON.parse(localStorage.getItem('cart')) || []; }
+      catch { return []; }
+    }
+
+    function setCart(items) {
+      localStorage.setItem('cart', JSON.stringify(items));
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const items = getCart();
+      const count = items.reduce((acc, it) => acc + (it.qty || 0), 0);
+      document.getElementById('cartCount').textContent = count;
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('button.btn.primary[data-sku]');
+      if(!btn) return;
+      const card = btn.closest('.prod');
+      const qtyInput = card.querySelector('.qty');
+      const qty = Math.max(1, parseInt(qtyInput.value || "1", 10));
+      const sku = btn.dataset.sku;
+      const prod = PRODUCTS.find(p => p.id === sku);
+      if(!prod) return;
+
+      const cart = getCart();
+      const existing = cart.find(it => it.sku === sku);
+      if (existing) existing.qty += qty;
+      else cart.push({ sku, nombre: prod.nombre, precio: prod.precio, qty, category: CATEGORY_ID });
+
+      setCart(cart);
+      btn.textContent = "Agregado ✓";
+      setTimeout(() => (btn.textContent = "Agregar"), 900);
+    });
+
+    renderCatalog();
+    updateCartCount();
+  </script>
+</body>
+</html>
