@@ -4,191 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ferretería y Pinturería Gallego — Agua y Plomería</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    .catalogo { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:1rem; }
-    .prod { background:var(--card); border:1px solid #ddd; border-radius:1rem; padding:1rem; display:flex; gap:.75rem; flex-direction:column; }
-    .prod h3 { margin:.25rem 0; font-size:1.05rem; }
-    .meta { color:var(--muted); font-size:.9rem; line-height:1.2; }
-    .price { font-weight:700; }
-    .sku { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:.85rem; color:var(--muted); }
-    .actions { display:flex; gap:.5rem; align-items:center; }
-    .qty { width:64px; padding:.4rem .5rem; border-radius:.5rem; border:1px solid #ccc; }
-    .pill { background:rgba(255,255,255,.12); padding:.2rem .45rem; border-radius:999px; font-size:.8rem; color:#fff; }
-    .cart-indicator { margin-left:.5rem; }
-  </style>
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <header class="navbar">
-    <a class="brand" href="index.html" aria-label="Inicio">🧰 Ferretería y Pinturería Gallego</a>
-
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-
-      <div class="dropdown mega">
-        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Categorías</button>
-        <div class="dropdown-menu mega-menu" role="menu">
-          <div class="mega-col">
-            <h3>Agua y Plomería</h3>
-            <a href="categoria-agua.html" role="menuitem">Caños y conexiones</a>
-            <a href="categoria-agua.html" role="menuitem">Grifería</a>
-            <a href="categoria-agua.html" role="menuitem">Bombas y válvulas</a>
-          </div>
-          <div class="mega-col">
-            <h3>Pintura</h3>
-            <a href="categoria-pintura.html" role="menuitem">Pinturas y esmaltes</a>
-            <a href="categoria-pintura.html" role="menuitem">Rodillos y pinceles</a>
-            <a href="categoria-pintura.html" role="menuitem">Preparación y diluyentes</a>
-          </div>
-          <div class="mega-col">
-            <h3>Herramientas</h3>
-            <a href="categoria-herramientas-manuales.html" role="menuitem">Manuales</a>
-            <a href="categoria-herramientas-electricas.html" role="menuitem">Eléctricas</a>
-            <a href="categoria-herramientas-electricas.html" role="menuitem">Accesorios</a>
-          </div>
-          <div class="mega-col">
-            <h3>Electricidad</h3>
-            <a href="categoria-electricidad-iluminacion.html" role="menuitem">Cables y tableros</a>
-            <a href="categoria-electricidad-iluminacion.html" role="menuitem">Tomas y llaves</a>
-            <a href="categoria-electricidad-iluminacion.html" role="menuitem">Iluminación LED</a>
-          </div>
-          <div class="mega-col">
-            <h3>Cerrajería</h3>
-            <a href="categoria-cerrajeria-herrajes.html" role="menuitem">Cerraduras y cilindros</a>
-            <a href="categoria-cerrajeria-herrajes.html" role="menuitem">Bisagras y pasadores</a>
-            <a href="categoria-cerrajeria-herrajes.html" role="menuitem">Herrajes</a>
-          </div>
-          <div class="mega-col">
-            <h3>Tornillería</h3>
-            <a href="categoria-tornilleria-fijaciones.html" role="menuitem">Tornillos</a>
-            <a href="categoria-tornilleria-fijaciones.html" role="menuitem">Tarugos y anclajes</a>
-            <a href="categoria-tornilleria-fijaciones.html" role="menuitem">Arandelas y tuercas</a>
-          </div>
-          <div class="mega-col">
-            <h3>Adhesivos</h3>
-            <a href="categoria-adhesivos-selladores.html" role="menuitem">Pegamentos</a>
-            <a href="categoria-adhesivos-selladores.html" role="menuitem">Siliconas y selladores</a>
-            <a href="categoria-adhesivos-selladores.html" role="menuitem">Espumas PU</a>
-          </div>
-          <div class="mega-col">
-            <h3>Seguridad</h3>
-            <a href="categoria-seguridad-higiene.html" role="menuitem">EPP</a>
-            <a href="categoria-seguridad-higiene.html" role="menuitem">Señalética</a>
-            <a href="categoria-seguridad-higiene.html" role="menuitem">Extintores</a>
-          </div>
-          <div class="mega-col">
-            <h3>Jardinería</h3>
-            <a href="categoria-jardineria.html" role="menuitem">Mangueras y riego</a>
-            <a href="categoria-jardineria.html" role="menuitem">Herramientas de jardín</a>
-            <a href="categoria-jardineria.html" role="menuitem">Césped y poda</a>
-          </div>
-          <div class="mega-col">
-            <h3>Construcción</h3>
-            <a href="categoria-construccion.html" role="menuitem">Líneas de obra</a>
-            <a href="categoria-construccion.html" role="menuitem">Cortes y abrasivos</a>
-            <a href="categoria-construccion.html" role="menuitem">Niveles y medición</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="nav-actions">
-      <a class="btn" href="login.html">Logout</a>
-      <span class="pill cart-indicator" id="cartCount">0</span>
-    </div>
+    <a class="brand" href="index.html">🧰 Ferretería y Pinturería Gallego</a>
+    <nav class="nav-links"></nav>
+    <div class="nav-actions"><a class="btn" href="login.html">Logout</a></div>
   </header>
 
-  <main class="container">
+  <main class="container page">
     <h1>Agua y Plomería</h1>
-    <p class="meta">Caños, conexiones, grifería, bombas, válvulas y selladores.</p>
-
+    <p class="meta">Caños, grifería, bombas y más.</p>
     <section class="catalogo" id="catalogo"></section>
   </main>
 
   <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
-
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.addEventListener('click', (e) => {
-      const dd = e.target.closest('.dropdown');
-      document.querySelectorAll('.dropdown').forEach(d => {
-        const open = d === dd && !d.classList.contains('open');
-        d.classList.toggle('open', open);
-        const btn = d.querySelector('.dropbtn');
-        if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    });
-
-    const CATEGORY_ID = "agua-plomeria";
     const PRODUCTS = [
-      { id:"AG-001", nombre:"Caño PVC Ø 1/2\" x 3m", medida:"1/2\" x 3 m", marca:"IPS", precio: 2990, stock: true },
-      { id:"AG-002", nombre:"Codo PVC 90° Ø 1/2\"", medida:"1/2\"", marca:"IPS", precio: 590, stock: true },
-      { id:"AG-003", nombre:"Unión doble Ø 1\"", medida:"1\"", marca:"Duratop", precio: 1290, stock: true },
-      { id:"AG-004", nombre:"Grifería monocomando cocina", medida:"1/2\"", marca:"FV", precio: 55990, stock: true },
-      { id:"AG-005", nombre:"Válvula de retención bronce 3/4\"", medida:"3/4\"", marca:"Latyn", precio: 7990, stock: true },
-      { id:"AG-006", nombre:"Bomba presurizadora 1/2 HP", medida:"1/2 HP", marca:"Rowa", precio: 169990, stock: true },
-      { id:"AG-007", nombre:"Te PVC Ø 3/4\"", medida:"3/4\"", marca:"IPS", precio: 880, stock: true },
-      { id:"AG-008", nombre:"Cinta teflón 19 mm", medida:"10 m", marca:"Truper", precio: 450, stock: true },
-      { id:"AG-009", nombre:"Sellador anaeróbico roscas", medida:"50 g", marca:"Loctite 577", precio: 9990, stock: true }
+      {id:"AP-001", nombre:"Caño PVC 1\"", marca:"Duratop", precio:890},
+      {id:"AP-002", nombre:"Grifería de cocina", marca:"FV", precio:24990},
+      {id:"AP-003", nombre:"Bomba centrífuga 1/2hp", marca:"Motorarg", precio:69900}
     ];
-
-    function money(n){ return new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS', maximumFractionDigits:0}).format(n); }
-
-    function renderCatalog() {
-      const el = document.getElementById('catalogo');
-      el.innerHTML = PRODUCTS.map(p => `
-        <article class="prod">
-          <div class="sku">SKU: ${p.id}</div>
-          <h3>${p.nombre}</h3>
-          <div class="meta">${p.marca}${p.medida ? " · " + p.medida : ""}</div>
-          <div class="price">${money(p.precio)}</div>
-          <div class="actions">
-            <input class="qty" type="number" min="1" value="1" aria-label="Cantidad" />
-            <button class="btn primary" data-sku="${p.id}">Agregar</button>
-          </div>
-        </article>
-      `).join('');
-    }
-
-    function getCart() {
-      try { return JSON.parse(localStorage.getItem('cart')) || []; }
-      catch { return []; }
-    }
-
-    function setCart(items) {
-      localStorage.setItem('cart', JSON.stringify(items));
-      updateCartCount();
-    }
-
-    function updateCartCount() {
-      const items = getCart();
-      const count = items.reduce((acc, it) => acc + (it.qty || 0), 0);
-      document.getElementById('cartCount').textContent = count;
-    }
-
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('button.btn.primary[data-sku]');
-      if(!btn) return;
-      const card = btn.closest('.prod');
-      const qtyInput = card.querySelector('.qty');
-      const qty = Math.max(1, parseInt(qtyInput.value || "1", 10));
-      const sku = btn.dataset.sku;
-      const prod = PRODUCTS.find(p => p.id === sku);
-      if(!prod) return;
-
-      const cart = getCart();
-      const existing = cart.find(it => it.sku === sku);
-      if (existing) existing.qty += qty;
-      else cart.push({ sku, nombre: prod.nombre, precio: prod.precio, qty, category: CATEGORY_ID });
-
-      setCart(cart);
-      btn.textContent = "Agregado ✓";
-      setTimeout(() => (btn.textContent = "Agregar"), 900);
-    });
-
-    renderCatalog();
-    updateCartCount();
+    function money(n){return new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS'}).format(n);}
+    document.getElementById('catalogo').innerHTML = PRODUCTS.map(p=>`
+      <article class="prod">
+        <div class="sku">SKU: ${p.id}</div>
+        <h3>${p.nombre}</h3>
+        <div class="meta">${p.marca}</div>
+        <div class="price">${money(p.precio)}</div>
+        <div class="actions">
+          <input class="qty" type="number" min="1" value="1">
+          <button class="btn primary">Agregar</button>
+        </div>
+      </article>`).join('');
   </script>
 </body>
 </html>

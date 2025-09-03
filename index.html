@@ -4,119 +4,82 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ferretería y Pinturería Gallego — Inicio</title>
-  <link rel="stylesheet" href="styles.css?v=1" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <header class="navbar">
-    <a class="brand" href="index.html" aria-label="Inicio">🧰 Ferretería y Pinturería Gallego</a>
+    <a class="brand" href="index.html" aria-label="Inicio">
+      🧰 Ferretería y Pinturería Gallego
+    </a>
 
-    <nav class="nav-links">
-      <a href="index.html" class="active">Home</a>
-
-      <div class="dropdown mega">
-        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Categorías</button>
-        <div class="dropdown-menu mega-menu" role="menu">
-          <div class="mega-col">
-            <h3>Agua y Plomería</h3>
-            <a href="categoria-agua.html" role="menuitem">Caños y conexiones</a>
-            <a href="categoria-agua.html" role="menuitem">Grifería</a>
-            <a href="categoria-agua.html" role="menuitem">Bombas y válvulas</a>
-          </div>
-          <div class="mega-col">
-            <h3>Pintura</h3>
-            <a href="categoria-pintura.html" role="menuitem">Pinturas y esmaltes</a>
-            <a href="categoria-pintura.html" role="menuitem">Rodillos y pinceles</a>
-            <a href="categoria-pintura.html" role="menuitem">Preparación y diluyentes</a>
-          </div>
-          <div class="mega-col">
-            <h3>Herramientas</h3>
-            <a href="categoria-herramientas-manuales.html" role="menuitem">Manuales</a>
-            <a href="categoria-herramientas-electricas.html" role="menuitem">Eléctricas</a>
-            <a href="categoria-herramientas-electricas.html" role="menuitem">Accesorios</a>
-          </div>
-          <div class="mega-col">
-            <h3>Electricidad</h3>
-            <a href="categoria-electricidad-iluminacion.html" role="menuitem">Cables y tableros</a>
-            <a href="categoria-electricidad-iluminacion.html" role="menuitem">Tomas y llaves</a>
-            <a href="categoria-electricidad-iluminacion.html" role="menuitem">Iluminación LED</a>
-          </div>
-          <div class="mega-col">
-            <h3>Cerrajería</h3>
-            <a href="categoria-cerrajeria-herrajes.html" role="menuitem">Cerraduras y cilindros</a>
-            <a href="categoria-cerrajeria-herrajes.html" role="menuitem">Bisagras y pasadores</a>
-            <a href="categoria-cerrajeria-herrajes.html" role="menuitem">Herrajes</a>
-          </div>
-          <div class="mega-col">
-            <h3>Tornillería</h3>
-            <a href="categoria-tornilleria-fijaciones.html" role="menuitem">Tornillos</a>
-            <a href="categoria-tornilleria-fijaciones.html" role="menuitem">Tarugos y anclajes</a>
-            <a href="categoria-tornilleria-fijaciones.html" role="menuitem">Arandelas y tuercas</a>
-          </div>
-          <div class="mega-col">
-            <h3>Adhesivos</h3>
-            <a href="categoria-adhesivos-selladores.html" role="menuitem">Pegamentos</a>
-            <a href="categoria-adhesivos-selladores.html" role="menuitem">Siliconas y selladores</a>
-            <a href="categoria-adhesivos-selladores.html" role="menuitem">Espumas de poliuretano</a>
-          </div>
-          <div class="mega-col">
-            <h3>Seguridad</h3>
-            <a href="categoria-seguridad-higiene.html" role="menuitem">EPP</a>
-            <a href="categoria-seguridad-higiene.html" role="menuitem">Señalética</a>
-            <a href="categoria-seguridad-higiene.html" role="menuitem">Extintores</a>
-          </div>
-          <div class="mega-col">
-            <h3>Jardinería</h3>
-            <a href="categoria-jardineria.html" role="menuitem">Mangueras y riego</a>
-            <a href="categoria-jardineria.html" role="menuitem">Herramientas de jardín</a>
-            <a href="categoria-jardineria.html" role="menuitem">Césped y poda</a>
-          </div>
-          <div class="mega-col">
-            <h3>Construcción</h3>
-            <a href="categoria-construccion.html" role="menuitem">Líneas de obra</a>
-            <a href="categoria-construccion.html" role="menuitem">Cortes y abrasivos</a>
-            <a href="categoria-construccion.html" role="menuitem">Niveles y medición</a>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <nav class="nav-links"></nav>
 
     <div class="nav-actions">
       <a class="btn" href="login.html">Logout</a>
     </div>
   </header>
 
-  <main class="container">
-    <h1>Comprá online, retiralo listo</h1>
-    <p>Pedí desde el celular y retiralo sin espera. Elegí una categoría para empezar.</p>
+  <section class="hero-full" style="--hero-img: url('img/hero-ferreteria.webp');">
+    <div class="hero-layer"></div>
+    <div class="hero-content container">
+      <h1>¿Qué necesitás hoy?</h1>
+      <p>Comprá online y retiralo listo en Ferretería y Pinturería Gallego.</p>
+    </div>
+  </section>
 
-    <section class="grid">
-      <a class="card" href="categoria-agua.html"><h2>Agua y Plomería</h2><p>Caños, grifería, bombas</p></a>
-      <a class="card" href="categoria-pintura.html"><h2>Pintura</h2><p>Pinturas, esmaltes, accesorios</p></a>
-      <a class="card" href="categoria-herramientas-manuales.html"><h2>Herramientas manuales</h2><p>Llaves, destornilladores, etc.</p></a>
-      <a class="card" href="categoria-herramientas-electricas.html"><h2>Herramientas eléctricas</h2><p>Taladros, amoladoras, sierras</p></a>
-      <a class="card" href="categoria-electricidad-iluminacion.html"><h2>Electricidad e iluminación</h2><p>Cables, térmicas, LED</p></a>
-      <a class="card" href="categoria-cerrajeria-herrajes.html"><h2>Cerrajería y herrajes</h2><p>Cerraduras, bisagras</p></a>
-      <a class="card" href="categoria-tornilleria-fijaciones.html"><h2>Tornillería y fijaciones</h2><p>Tornillos, tarugos, anclajes</p></a>
-      <a class="card" href="categoria-adhesivos-selladores.html"><h2>Adhesivos y selladores</h2><p>Pegamentos, siliconas, espumas</p></a>
-      <a class="card" href="categoria-seguridad-higiene.html"><h2>Seguridad e higiene</h2><p>Guantes, cascos, señalética</p></a>
-      <a class="card" href="categoria-jardineria.html"><h2>Jardinería</h2><p>Riego, poda, herramientas</p></a>
-      <a class="card" href="categoria-construccion.html"><h2>Construcción</h2><p>Abrasivos, medición, obra</p></a>
-    </section>
-  </main>
+  <nav class="cat-stripe">
+    <div class="cat-stripe-inner container">
+      <a class="cat-chip" href="categoria-agua.html">
+        <img src="img/icon-agua.svg" alt="" loading="lazy">
+        <span>Plomería</span>
+      </a>
+      <a class="cat-chip" href="categoria-pintura.html">
+        <img src="img/icon-pintura.svg" alt="" loading="lazy">
+        <span>Pintura</span>
+      </a>
+      <a class="cat-chip" href="categoria-herramientas-manuales.html">
+        <img src="img/icon-manuales.svg" alt="" loading="lazy">
+        <span>Herramientas</span>
+      </a>
+      <a class="cat-chip" href="categoria-herramientas-electricas.html">
+        <img src="img/icon-electricas.svg" alt="" loading="lazy">
+        <span>Eléctricas</span>
+      </a>
+      <a class="cat-chip" href="categoria-electricidad-iluminacion.html">
+        <img src="img/icon-electricidad.svg" alt="" loading="lazy">
+        <span>Electricidad</span>
+      </a>
+      <a class="cat-chip" href="categoria-cerrajeria-herrajes.html">
+        <img src="img/icon-cerrajeria.svg" alt="" loading="lazy">
+        <span>Cerrajería</span>
+      </a>
+      <a class="cat-chip" href="categoria-tornilleria-fijaciones.html">
+        <img src="img/icon-tornillos.svg" alt="" loading="lazy">
+        <span>Tornillería</span>
+      </a>
+      <a class="cat-chip" href="categoria-adhesivos-selladores.html">
+        <img src="img/icon-adhesivos.svg" alt="" loading="lazy">
+        <span>Adhesivos</span>
+      </a>
+      <a class="cat-chip" href="categoria-seguridad-higiene.html">
+        <img src="img/icon-seguridad.svg" alt="" loading="lazy">
+        <span>Seguridad</span>
+      </a>
+      <a class="cat-chip" href="categoria-jardineria.html">
+        <img src="img/icon-jardineria.svg" alt="" loading="lazy">
+        <span>Jardinería</span>
+      </a>
+      <a class="cat-chip" href="categoria-construccion.html">
+        <img src="img/icon-construccion.svg" alt="" loading="lazy">
+        <span>Construcción</span>
+      </a>
+    </div>
+  </nav>
 
   <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.addEventListener('click', (e) => {
-      const dd = e.target.closest('.dropdown');
-      document.querySelectorAll('.dropdown').forEach(d => {
-        const open = d === dd && !d.classList.contains('open');
-        d.classList.toggle('open', open);
-        const btn = d.querySelector('.dropbtn');
-        if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    });
   </script>
 </body>
 </html>

@@ -2,6 +2,8 @@
 
 **Alumno/a:** [Thiago Gallego Delfino]
 
+**Github:** [https://github.com/Thiago28G/Ferreteria-Gallego]
+
 ## Estructura
 - `index.html` (home con navbar, icono, logout y categorías)
 - `login.html` (form email + contraseña)
