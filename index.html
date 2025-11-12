@@ -6,18 +6,9 @@
   <title>Ferretería y Pinturería Gallego — Inicio</title>
   <link rel="stylesheet" href="styles.css?v=4" />
 </head>
+
 <body>
-  <header class="navbar">
-    <a class="brand" href="index.html" aria-label="Inicio">
-      🧰 Ferretería y Pinturería Gallego
-    </a>
-
-    <nav class="nav-links"></nav>
-
-    <div class="nav-actions">
-      <a class="btn" href="login.html">Logout</a>
-    </div>
-  </header>
+  <header id="app-header"></header>
 
   <section class="hero-full" style="--hero-img: url('img/hero-ferreteria.webp');">
     <div class="hero-layer"></div>
@@ -78,8 +69,14 @@
 
   <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
+
+<section class="catalogo-container">
+  <h2 class="catalogo-titulo">Productos destacados</h2>
+  <p class="catalogo-sub">Ofertas y favoritos de la semana.</p>
+
+  <div id="productGrid" class="catalogo-grid"></div>
+</section>
+

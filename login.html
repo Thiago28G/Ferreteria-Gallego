@@ -13,7 +13,6 @@
     </a>
     <nav class="nav-links"></nav>
     <div class="nav-actions">
-      <a class="btn" href="login.html">Logout</a>
     </div>
   </header>
 
@@ -21,16 +20,16 @@
     <h1>Iniciar sesión</h1>
     <p class="meta">Accedé a tu cuenta para continuar con tu compra.</p>
 
-    <form class="form" action="#" method="post" novalidate>
+    <form id="loginForm" class="form" action="#" method="post" novalidate>
       <label>
         Email
-        <input type="email" name="email" placeholder="tu@mail.com" required />
+        <input id="email" type="email" name="email" placeholder="tu@mail.com" required />
         <span class="help">Usá un correo válido (ej: nombre@dominio.com).</span>
       </label>
 
       <label>
         Contraseña
-        <input type="password" name="password" placeholder="********" minlength="6" required />
+        <input id="password" type="password" name="password" placeholder="********" minlength="6" required />
         <span class="help">Mínimo 6 caracteres.</span>
       </label>
 
@@ -44,5 +43,19 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+  <script type="module">
+    import { login } from './assets/js/auth.js';
+
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const pass  = document.getElementById('password').value.trim();
+      if (!email || !pass) { alert('Completá email y contraseña'); return; }
+      login(email); 
+    });
+  </script>
 </body>
 </html>
+
