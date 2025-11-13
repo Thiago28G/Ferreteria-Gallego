@@ -2,14 +2,34 @@
 <html lang="es">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Ferretería y Pinturería Gallego — Cerrajería y Herrajes</title><link rel="stylesheet" href="styles.css?v=4"/></head>
 <body>
-<header class="navbar"><a class="brand" href="index.html">🧰 Ferretería y Pinturería Gallego</a><nav class="nav-links"></nav><div class="nav-actions"><a class="btn" href="login.html">Logout</a></div></header>
-<main class="container page"><h1>Cerrajería y Herrajes</h1><p class="meta">Cerraduras, bisagras, pasadores y más.</p><section class="catalogo" id="catalogo"></section></main>
-<footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
-<script>
-document.getElementById('year').textContent=new Date().getFullYear();
-const PRODUCTS=[{id:"CR-001",nombre:"Cerradura de embutir",marca:"Prive",precio:6990},{id:"CR-002",nombre:"Bisagra 3\" reforzada",marca:"IndArg",precio:490},{id:"CR-003",nombre:"Manija aluminio",marca:"Acytra",precio:2990}];
-function money(n){return new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS'}).format(n);}
-document.getElementById('catalogo').innerHTML=PRODUCTS.map(p=>`<article class="prod"><div class="sku">SKU: ${p.id}</div><h3>${p.nombre}</h3><div class="meta">${p.marca}</div><div class="price">${money(p.precio)}</div><div class="actions"><input class="qty" type="number" min="1" value="1"><button class="btn primary">Agregar</button></div></article>`).join('');
-</script>
+  <header id="app-header"></header>
+  <main class="container page">
+    <h1>Cerrajería y Herrajes</h1>
+    <p class="meta">Cerraduras, bisagras, pasadores y más.</p>
+    <section class="catalogo-container">
+      <div id="productGrid" class="catalogo-grid"></div>
+    </section>
+  </main>
+  <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
+  <script type="module">
+    import { requireAuth, logout } from './assets/js/auth.js';
+    import { navLinks } from './assets/js/data/pages.js';
+    import { renderNavbar } from './assets/js/components/navbar.js';
+    import { renderProductCards } from './assets/js/components/cards.js';
+    requireAuth();
+    renderNavbar('#app-header', navLinks);
+    document.getElementById('btnLogout')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      logout();
+    });
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+    const products = [
+      { id:'CR-001', name:'Cerradura de embutir', sku:'CR-001', price:21000, img:'img/CerraduraPRIVE.png' },
+      { id:'CR-002', name:'Bisagra 3" reforzada', sku:'CR-002', price:3500, img:'img/BisagraReforzada.png' },
+      { id:'CR-003', name:'Manija aluminio', sku:'CR-003', price:2990, img:'img/ManijaAluminio.png' }
+    ];
+    renderProductCards('#productGrid', products);
+  </script>
 </body>
 </html>

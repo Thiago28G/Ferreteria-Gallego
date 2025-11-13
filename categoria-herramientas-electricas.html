@@ -1,15 +1,40 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Ferretería y Pinturería Gallego — Herramientas Eléctricas</title><link rel="stylesheet" href="styles.css?v=4"/></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferretería y Pinturería Gallego — Herramientas Eléctricas</title>
+  <link rel="stylesheet" href="styles.css?v=4" />
+</head>
 <body>
-<header class="navbar"><a class="brand" href="index.html">🧰 Ferretería y Pinturería Gallego</a><nav class="nav-links"></nav><div class="nav-actions"><a class="btn" href="login.html">Logout</a></div></header>
-<main class="container page"><h1>Herramientas Eléctricas</h1><p class="meta">Taladros, amoladoras, sierras y más.</p><section class="catalogo" id="catalogo"></section></main>
-<footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
-<script>
-document.getElementById('year').textContent=new Date().getFullYear();
-const PRODUCTS=[{id:"HE-001",nombre:"Taladro percutor 650W",marca:"Bosch",precio:35990},{id:"HE-002",nombre:"Amoladora angular 750W",marca:"Makita",precio:45990},{id:"HE-003",nombre:"Sierra circular 1400W",marca:"DeWalt",precio:89900}];
-function money(n){return new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS'}).format(n);}
-document.getElementById('catalogo').innerHTML=PRODUCTS.map(p=>`<article class="prod"><div class="sku">SKU: ${p.id}</div><h3>${p.nombre}</h3><div class="meta">${p.marca}</div><div class="price">${money(p.precio)}</div><div class="actions"><input class="qty" type="number" min="1" value="1"><button class="btn primary">Agregar</button></div></article>`).join('');
-</script>
+  <header id="app-header"></header>
+  <main class="container page">
+    <h1>Herramientas Eléctricas</h1>
+    <p class="meta">Taladros, amoladoras, sierras y más.</p>
+    <section class="catalogo-container">
+      <div id="productGrid" class="catalogo-grid"></div>
+    </section>
+  </main>
+  <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
+  <script type="module">
+    import { requireAuth, logout } from './assets/js/auth.js';
+    import { navLinks } from './assets/js/data/pages.js';
+    import { renderNavbar } from './assets/js/components/navbar.js';
+    import { renderProductCards } from './assets/js/components/cards.js';
+    requireAuth();
+    renderNavbar('#app-header', navLinks);
+    document.getElementById('btnLogout')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      logout();
+    });
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+    const products = [
+      { id:'HE-001', name:'Taladro percutor 650W', sku:'HE-001', price:88900, img:'img/Taladrop650.png' },
+      { id:'HE-002', name:'Amoladora angular 750W', sku:'HE-002', price:45990, img:'img/AmoladoraAngular750.png' },
+      { id:'HE-003', name:'Sierra circular 1400W', sku:'HE-003', price:163700, img:'img/SierraCircular1400.png' }
+    ];
+    renderProductCards('#productGrid', products);
+  </script>
 </body>
 </html>

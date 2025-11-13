@@ -2,14 +2,34 @@
 <html lang="es">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Ferretería y Pinturería Gallego — Adhesivos y Selladores</title><link rel="stylesheet" href="styles.css?v=4"/></head>
 <body>
-<header class="navbar"><a class="brand" href="index.html">🧰 Ferretería y Pinturería Gallego</a><nav class="nav-links"></nav><div class="nav-actions"><a class="btn" href="login.html">Logout</a></div></header>
-<main class="container page"><h1>Adhesivos y Selladores</h1><p class="meta">Pegamentos, siliconas y espumas de poliuretano.</p><section class="catalogo" id="catalogo"></section></main>
-<footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
-<script>
-document.getElementById('year').textContent=new Date().getFullYear();
-const PRODUCTS=[{id:"AD-001",nombre:"Pegamento universal 250ml",marca:"Poxipol",precio:990},{id:"AD-002",nombre:"Silicona transparente 280ml",marca:"Soudal",precio:1590},{id:"AD-003",nombre:"Espuma PU 750ml",marca:"Tytan",precio:2490}];
-function money(n){return new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS'}).format(n);}
-document.getElementById('catalogo').innerHTML=PRODUCTS.map(p=>`<article class="prod"><div class="sku">SKU: ${p.id}</div><h3>${p.nombre}</h3><div class="meta">${p.marca}</div><div class="price">${money(p.precio)}</div><div class="actions"><input class="qty" type="number" min="1" value="1"><button class="btn primary">Agregar</button></div></article>`).join('');
-</script>
+  <header id="app-header"></header>
+  <main class="container page">
+    <h1>Adhesivos y Selladores</h1>
+    <p class="meta">Pegamentos, siliconas y espumas de poliuretano.</p>
+    <section class="catalogo-container">
+      <div id="productGrid" class="catalogo-grid"></div>
+    </section>
+  </main>
+  <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
+  <script type="module">
+    import { requireAuth, logout } from './assets/js/auth.js';
+    import { navLinks } from './assets/js/data/pages.js';
+    import { renderNavbar } from './assets/js/components/navbar.js';
+    import { renderProductCards } from './assets/js/components/cards.js';
+    requireAuth();
+    renderNavbar('#app-header', navLinks);
+    document.getElementById('btnLogout')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      logout();
+    });
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+    const products = [
+      { id:'AD-001', name:'Pegamento universal 250ml', sku:'AD-001', price:6700, img:'img/Pegamento.png' },
+      { id:'AD-002', name:'Silicona transparente 280ml', sku:'AD-002', price:4000, img:'img/Silicona.png' },
+      { id:'AD-003', name:'Espuma PU 750ml', sku:'AD-003', price:14000, img:'img/Espuma.png' }
+    ];
+    renderProductCards('#productGrid', products);
+  </script>
 </body>
 </html>

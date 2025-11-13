@@ -4,16 +4,11 @@ export function renderNavbar(targetSelector, links) {
 
   host.className = 'navbar';
   host.innerHTML = `
-    <!-- Botón de menú a la izquierda -->
     <div class="nav-left">
       <button class="menu-btn" aria-expanded="false" aria-controls="menu-list">☰ Menú</button>
       <ul id="menu-list" class="menu-dropdown"></ul>
     </div>
-
-    <!-- Marca centrada -->
     <a class="brand" href="index.html" aria-label="Inicio">🧰 Ferretería y Pinturería Gallego</a>
-
-    <!-- Acción a la derecha -->
     <div class="nav-actions"></div>
   `;
 

@@ -7,38 +7,34 @@
   <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
-  <header class="navbar">
-    <a class="brand" href="index.html">🧰 Ferretería y Pinturería Gallego</a>
-    <nav class="nav-links"></nav>
-    <div class="nav-actions"><a class="btn" href="login.html">Logout</a></div>
-  </header>
-
+  <header id="app-header"></header>
   <main class="container page">
     <h1>Agua y Plomería</h1>
     <p class="meta">Caños, grifería, bombas y más.</p>
-    <section class="catalogo" id="catalogo"></section>
+    <section class="catalogo-container">
+      <div id="productGrid" class="catalogo-grid"></div>
+    </section>
   </main>
-
   <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const PRODUCTS = [
-      {id:"AP-001", nombre:"Caño PVC 1\"", marca:"Duratop", precio:890},
-      {id:"AP-002", nombre:"Grifería de cocina", marca:"FV", precio:24990},
-      {id:"AP-003", nombre:"Bomba centrífuga 1/2hp", marca:"Motorarg", precio:69900}
+  <script type="module">
+    import { requireAuth, logout } from './assets/js/auth.js';
+    import { navLinks } from './assets/js/data/pages.js';
+    import { renderNavbar } from './assets/js/components/navbar.js';
+    import { renderProductCards } from './assets/js/components/cards.js';
+    requireAuth();
+    renderNavbar('#app-header', navLinks);
+    document.getElementById('btnLogout')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      logout();
+    });
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+    const products = [
+      { id:'AP-001', name:'Caño PVC 110', sku:'AP-001', price:21000, img:'img/cano-pvc-110.png' },
+      { id:'AP-002', name:'Grifería de cocina', sku:'AP-002', price:24990, img:'img/griferia-de-cocina.png' },
+      { id:'AP-003', name:'Bomba centrífuga 1/2hp', sku:'AP-003', price:69900, img:'img/bomba-de-agua.png' }
     ];
-    function money(n){return new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS'}).format(n);}
-    document.getElementById('catalogo').innerHTML = PRODUCTS.map(p=>`
-      <article class="prod">
-        <div class="sku">SKU: ${p.id}</div>
-        <h3>${p.nombre}</h3>
-        <div class="meta">${p.marca}</div>
-        <div class="price">${money(p.precio)}</div>
-        <div class="actions">
-          <input class="qty" type="number" min="1" value="1">
-          <button class="btn primary">Agregar</button>
-        </div>
-      </article>`).join('');
+    renderProductCards('#productGrid', products);
   </script>
 </body>
 </html>
