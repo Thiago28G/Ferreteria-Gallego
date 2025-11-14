@@ -1,4 +1,3 @@
-// Funciones compartidas para el carrito
 export function getCart() {
   try { return JSON.parse(localStorage.getItem('cart') || '[]'); }
   catch { return []; }
@@ -23,14 +22,12 @@ export function updateCartView() {
   const total = cart.reduce((acc, p) => acc + (Number(p.price)||0) * (Number(p.qty)||0), 0);
   const totalItems = cart.reduce((acc, p) => acc + (Number(p.qty)||0), 0);
   
-  // Actualizar badge del carrito
   const badge = document.getElementById('cart-badge');
   if (badge) {
     badge.textContent = totalItems;
     badge.style.display = totalItems > 0 ? 'flex' : 'none';
   }
   
-  // Actualizar contenido del carrito
   if (cart.length === 0) {
     container.innerHTML = `
       <div class="empty-cart">
@@ -51,7 +48,6 @@ export function updateCartView() {
       </div>
     `).join('');
     
-    // Agregar event listeners a los botones de eliminar
     container.querySelectorAll('.cart-item-remove').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const productId = btn.getAttribute('data-product-id');
@@ -89,11 +85,9 @@ export function closeCart() {
 }
 
 export function initCart() {
-  // Crear elementos del carrito si no existen
   if (!document.getElementById('cart-overlay')) {
     const body = document.body;
     body.insertAdjacentHTML('beforeend', `
-      <!-- Carrito desplegable -->
       <div id="cart-overlay" class="cart-overlay"></div>
       <div id="cart-drawer" class="cart-drawer">
         <div class="cart-drawer-header">
@@ -115,7 +109,6 @@ export function initCart() {
     `);
   }
 
-  // Event listeners para el carrito
   const cartToggle = document.getElementById('cart-toggle');
   const cartClose = document.getElementById('cart-close');
   const cartOverlay = document.getElementById('cart-overlay');
@@ -151,16 +144,11 @@ export function initCart() {
     });
   }
 
-  // Actualizar vista inicial
   updateCartView();
-  
-  // Escuchar cambios en localStorage
   window.addEventListener('storage', updateCartView);
 }
 
-// Sistema de notificaciones
 export function showCartNotification(productName, quantity) {
-  // Crear o obtener el contenedor de notificaciones
   let notificationContainer = document.getElementById('cart-notifications');
   if (!notificationContainer) {
     notificationContainer = document.createElement('div');
@@ -169,7 +157,6 @@ export function showCartNotification(productName, quantity) {
     document.body.appendChild(notificationContainer);
   }
 
-  // Crear la notificación
   const notification = document.createElement('div');
   notification.className = 'cart-notification';
   notification.innerHTML = `
@@ -179,12 +166,10 @@ export function showCartNotification(productName, quantity) {
 
   notificationContainer.appendChild(notification);
 
-  // Animación de entrada
   setTimeout(() => {
     notification.classList.add('show');
   }, 10);
 
-  // Remover después de 3 segundos
   setTimeout(() => {
     notification.classList.remove('show');
     setTimeout(() => {

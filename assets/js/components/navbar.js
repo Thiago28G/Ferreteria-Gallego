@@ -2,7 +2,6 @@ export function renderNavbar(targetSelector, links) {
   const host = document.querySelector(targetSelector);
   if (!host) return;
 
-  // Mapeo de categorías a sus páginas HTML
   const categoryPages = {
     'adhesivos-selladores': 'categoria-adhesivos-selladores.html',
     'agua': 'categoria-agua.html',
@@ -36,7 +35,6 @@ export function renderNavbar(targetSelector, links) {
   const actions = host.querySelector('.nav-actions');
   const btnCategories = host.querySelector('.categories-btn');
 
-  // Agregar solo categorías al menú
   const categoryLinks = [
     { slug: 'adhesivos-selladores', title: 'Adhesivos y Selladores' },
     { slug: 'agua', title: 'Plomería y Agua' },
@@ -51,7 +49,6 @@ export function renderNavbar(targetSelector, links) {
     { slug: 'construccion', title: 'Construcción' }
   ];
 
-  // Agregar categorías al menú
   categoryLinks.forEach(cat => {
     const li = document.createElement('li');
     const a = document.createElement('a');
@@ -61,7 +58,6 @@ export function renderNavbar(targetSelector, links) {
     categoriesUl.appendChild(li);
   });
 
-  // Event listener para el botón de categorías
   btnCategories.addEventListener('click', (e) => {
     e.stopPropagation();
     const expanded = btnCategories.getAttribute('aria-expanded') === 'true';
@@ -69,7 +65,6 @@ export function renderNavbar(targetSelector, links) {
     categoriesUl.classList.toggle('open');
   });
 
-  // Cerrar menú al hacer click fuera
   document.addEventListener('click', (e) => {
     if (!host.contains(e.target)) {
       categoriesUl.classList.remove('open');
@@ -77,7 +72,6 @@ export function renderNavbar(targetSelector, links) {
     }
   });
 
-  // Agregar botón de logout a nav-actions
   links.forEach(l => {
     if (l.id === 'btnLogout') {
       const a = document.createElement('a');

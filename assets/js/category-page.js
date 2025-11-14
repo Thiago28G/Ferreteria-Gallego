@@ -1,4 +1,3 @@
-// Script helper para páginas de categorías
 export async function initCategoryPage(categorySlug) {
   const categoryPages = {
     'adhesivos-selladores': 'Adhesivos y Selladores',

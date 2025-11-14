@@ -51,13 +51,11 @@ export function renderProductCards(containerSelector, products = [], onCartUpdat
       addToCart({ id: p.id, name: p.name, price: p.price, img: p.img }, qty);
       if (onCartUpdate) onCartUpdate();
       
-      // Mostrar notificación
       import('./cart.js').then(({ showCartNotification }) => {
         showCartNotification(p.name, qty);
       });
     });
 
-    // Botón de detalles
     const btnDetails = card.querySelector('.btn-ghost');
     if (btnDetails) {
       btnDetails.addEventListener('click', () => {
@@ -70,7 +68,6 @@ export function renderProductCards(containerSelector, products = [], onCartUpdat
 }
 
 function showProductModal(product) {
-  // Crear o obtener el modal
   let modal = document.getElementById('product-modal');
   let overlay = document.getElementById('product-modal-overlay');
   
@@ -86,11 +83,9 @@ function showProductModal(product) {
     document.body.appendChild(overlay);
     document.body.appendChild(modal);
     
-    // Cerrar al hacer click en el overlay
     overlay.addEventListener('click', closeProductModal);
   }
   
-  // Llenar el modal con la información del producto
   modal.innerHTML = `
     <button class="product-modal-close" aria-label="Cerrar">×</button>
     <div class="product-modal-image">
@@ -105,7 +100,6 @@ function showProductModal(product) {
     </div>
   `;
   
-  // Event listeners
   const closeBtn = modal.querySelector('.product-modal-close');
   closeBtn.addEventListener('click', closeProductModal);
   
@@ -118,7 +112,6 @@ function showProductModal(product) {
     closeProductModal();
   });
   
-  // Mostrar el modal
   overlay.classList.add('active');
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
