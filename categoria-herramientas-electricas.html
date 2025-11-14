@@ -21,20 +21,22 @@
     import { navLinks } from './assets/js/data/pages.js';
     import { renderNavbar } from './assets/js/components/navbar.js';
     import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+    import { initCategoryPage } from './assets/js/category-page.js';
+    
     requireAuth();
     renderNavbar('#app-header', navLinks);
+    initCart();
+    
     document.getElementById('btnLogout')?.addEventListener('click', (e) => {
       e.preventDefault();
       logout();
     });
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
-    const products = [
-      { id:'HE-001', name:'Taladro percutor 650W', sku:'HE-001', price:88900, img:'img/Taladrop650.png' },
-      { id:'HE-002', name:'Amoladora angular 750W', sku:'HE-002', price:45990, img:'img/AmoladoraAngular750.png' },
-      { id:'HE-003', name:'Sierra circular 1400W', sku:'HE-003', price:163700, img:'img/SierraCircular1400.png' }
-    ];
-    renderProductCards('#productGrid', products);
+    
+    const products = await initCategoryPage('herramientas-electricas');
+    renderProductCards('#productGrid', products, updateCartView);
   </script>
 </body>
 </html>

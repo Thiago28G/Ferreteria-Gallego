@@ -21,20 +21,22 @@
     import { navLinks } from './assets/js/data/pages.js';
     import { renderNavbar } from './assets/js/components/navbar.js';
     import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+    import { initCategoryPage } from './assets/js/category-page.js';
+    
     requireAuth();
     renderNavbar('#app-header', navLinks);
+    initCart();
+    
     document.getElementById('btnLogout')?.addEventListener('click', (e) => {
       e.preventDefault();
       logout();
     });
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
-    const products = [
-      { id:'HM-001', name:'Llave inglesa ajustable 10"', sku:'HM-001', price:34200, img:'img/LLave10.png' },
-      { id:'HM-002', name:'Destornillador plano 6"', sku:'HM-002', price:1990, img:'img/Destornillador6.png' },
-      { id:'HM-003', name:'Martillo carpintero 16 oz', sku:'HM-003', price:9900, img:'img/MartilloCarpintero16.png', }
-    ];
-    renderProductCards('#productGrid', products);
+    
+    const products = await initCategoryPage('herramientas-manuales');
+    renderProductCards('#productGrid', products, updateCartView);
   </script>
 </body>
 </html>

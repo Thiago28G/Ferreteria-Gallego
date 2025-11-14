@@ -21,20 +21,22 @@
     import { navLinks } from './assets/js/data/pages.js';
     import { renderNavbar } from './assets/js/components/navbar.js';
     import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+    import { initCategoryPage } from './assets/js/category-page.js';
+    
     requireAuth();
     renderNavbar('#app-header', navLinks);
+    initCart();
+    
     document.getElementById('btnLogout')?.addEventListener('click', (e) => {
       e.preventDefault();
       logout();
     });
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
-    const products = [
-      { id:'TF-001', name:'Caja tornillos 3,5x30', sku:'TF-001', price:6300, img:'img/Tornillos.png' },
-      { id:'TF-002', name:'Tarugos plásticos x100', sku:'TF-002', price:4000, img:'img/Tarugos.png' },
-      { id:'TF-003', name:'Arandelas planas x50', sku:'TF-003', price:1100, img:'img/Arandelas.png' }
-    ];
-    renderProductCards('#productGrid', products);
+    
+    const products = await initCategoryPage('tornilleria-fijaciones');
+    renderProductCards('#productGrid', products, updateCartView);
   </script>
 </body>
 </html>

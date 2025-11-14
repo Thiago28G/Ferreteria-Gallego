@@ -21,20 +21,22 @@
     import { navLinks } from './assets/js/data/pages.js';
     import { renderNavbar } from './assets/js/components/navbar.js';
     import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+    import { initCategoryPage } from './assets/js/category-page.js';
+    
     requireAuth();
     renderNavbar('#app-header', navLinks);
+    initCart();
+    
     document.getElementById('btnLogout')?.addEventListener('click', (e) => {
       e.preventDefault();
       logout();
     });
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
-    const products = [
-      { id:'EL-001', name:'Cable 2,5mm x 100m', sku:'EL-001', price:29900, img:'img/Cable25x100.png' },
-      { id:'EL-002', name:'Disyuntor bipolar 25A', sku:'EL-002', price:37000, img:'img/Disyuntor25.png' },
-      { id:'EL-003', name:'Lámpara LED 12W', sku:'EL-003', price:3500, img:'img/Lampara12.png' }
-    ];
-    renderProductCards('#productGrid', products);
+    
+    const products = await initCategoryPage('electricidad-iluminacion');
+    renderProductCards('#productGrid', products, updateCartView);
   </script>
 </body>
 </html>

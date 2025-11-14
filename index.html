@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ferretería y Pinturería Gallego — Inicio</title>
   <link rel="stylesheet" href="styles.css?v=4" />
+  <style>
+    :root{--gap:16px}
+    .categoria-block{padding:48px 0}
+    .categoria-block h2{margin:0 0 24px 0;padding:0 16px;font-size:1.75rem;color:var(--dark);font-weight:700}
+    .catalogo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--gap);padding:0 16px}
+    .prod-card{border:1px solid #e6e6e6;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+    .prod-thumb{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:#fafafa}
+    .prod-thumb img{max-width:90%;max-height:90%;object-fit:contain;display:block}
+    .prod-body{padding:12px;display:flex;flex-direction:column;gap:8px}
+    .prod-name{font-weight:600;line-height:1.2}
+    .prod-sku{font-size:.85rem;color:#666}
+    .prod-description{font-size:.8rem;color:#666;line-height:1.4;margin-top:4px}
+    .prod-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .prod-price{font-weight:700}
+    .qty-wrap{display:flex;align-items:center}
+    .stepper{display:inline-flex;align-items:center;border:1px solid #ddd;border-radius:8px;overflow:hidden}
+    .stepper .dec,.stepper .inc{width:36px;height:36px;border:0;background:#f3f3f3;cursor:pointer}
+    .stepper .qty{width:48px;height:36px;border:0;text-align:center}
+  </style>
 </head>
 
 <body>
@@ -18,62 +37,89 @@
     </div>
   </section>
 
-  <nav class="cat-stripe">
-    <div class="cat-stripe-inner container">
-      <a class="cat-chip" href="categoria-agua.html">
-        <img src="img/icon-agua.svg" alt="" loading="lazy">
-        <span>Plomería</span>
-      </a>
-      <a class="cat-chip" href="categoria-pintura.html">
-        <img src="img/icon-pintura.svg" alt="" loading="lazy">
-        <span>Pintura</span>
-      </a>
-      <a class="cat-chip" href="categoria-herramientas-manuales.html">
-        <img src="img/icon-manuales.svg" alt="" loading="lazy">
-        <span>Herramientas</span>
-      </a>
-      <a class="cat-chip" href="categoria-herramientas-electricas.html">
-        <img src="img/icon-electricas.svg" alt="" loading="lazy">
-        <span>Eléctricas</span>
-      </a>
-      <a class="cat-chip" href="categoria-electricidad-iluminacion.html">
-        <img src="img/icon-electricidad.svg" alt="" loading="lazy">
-        <span>Electricidad</span>
-      </a>
-      <a class="cat-chip" href="categoria-cerrajeria-herrajes.html">
-        <img src="img/icon-cerrajeria.svg" alt="" loading="lazy">
-        <span>Cerrajería</span>
-      </a>
-      <a class="cat-chip" href="categoria-tornilleria-fijaciones.html">
-        <img src="img/icon-tornillos.svg" alt="" loading="lazy">
-        <span>Tornillería</span>
-      </a>
-      <a class="cat-chip" href="categoria-adhesivos-selladores.html">
-        <img src="img/icon-adhesivos.svg" alt="" loading="lazy">
-        <span>Adhesivos</span>
-      </a>
-      <a class="cat-chip" href="categoria-seguridad-higiene.html">
-        <img src="img/icon-seguridad.svg" alt="" loading="lazy">
-        <span>Seguridad</span>
-      </a>
-      <a class="cat-chip" href="categoria-jardineria.html">
-        <img src="img/icon-jardineria.svg" alt="" loading="lazy">
-        <span>Jardinería</span>
-      </a>
-      <a class="cat-chip" href="categoria-construccion.html">
-        <img src="img/icon-construccion.svg" alt="" loading="lazy">
-        <span>Construcción</span>
-      </a>
-    </div>
-  </nav>
+  <main id="main-content">
+    <section id="agua" class="categoria-block">
+      <h2>Plomería y Agua</h2>
+      <div id="grid-agua" class="catalogo-grid"></div>
+    </section>
 
-  <section class="catalogo-container">
-    <h2 class="catalogo-titulo">Productos destacados</h2>
-    <p class="catalogo-sub">Ofertas y favoritos de la semana.</p>
-    <div id="productGrid" class="catalogo-grid"></div>
-  </section>
+    <section id="pintura" class="categoria-block">
+      <h2>Pintura</h2>
+      <div id="grid-pintura" class="catalogo-grid"></div>
+    </section>
+
+    <section id="herramientas-manuales" class="categoria-block">
+      <h2>Herramientas Manuales</h2>
+      <div id="grid-herramientas-manuales" class="catalogo-grid"></div>
+    </section>
+
+    <section id="electricidad-iluminacion" class="categoria-block">
+      <h2>Electricidad e Iluminación</h2>
+      <div id="grid-electricidad-iluminacion" class="catalogo-grid"></div>
+    </section>
+
+    <section id="adhesivos-selladores" class="categoria-block">
+      <h2>Adhesivos y Selladores</h2>
+      <div id="grid-adhesivos-selladores" class="catalogo-grid"></div>
+    </section>
+
+    <section id="jardineria" class="categoria-block">
+      <h2>Jardinería</h2>
+      <div id="grid-jardineria" class="catalogo-grid"></div>
+    </section>
+
+    <section id="construccion" class="categoria-block">
+      <h2>Construcción</h2>
+      <div id="grid-construccion" class="catalogo-grid"></div>
+    </section>
+  </main>
+
+
   <footer class="footer">© <span id="year"></span> Ferretería y Pinturería Gallego</footer>
-  <script type="module" src="assets/js/app.js"></script>
+
+  <script type="module">
+    import { requireAuth, logout } from './assets/js/auth.js';
+    import { navLinks } from './assets/js/data/pages.js';
+    import { renderNavbar } from './assets/js/components/navbar.js';
+    import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+
+    requireAuth();
+    renderNavbar('#app-header', navLinks);
+    initCart();
+    
+    document.getElementById('btnLogout')?.addEventListener('click', e => { e.preventDefault(); logout(); });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    async function loadProducts() {
+      try {
+        const res = await fetch('./assets/js/data/products.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('no ok');
+        const data = await res.json();
+        const map = {
+          'agua': 'grid-agua',
+          'pintura': 'grid-pintura',
+          'herramientas-manuales': 'grid-herramientas-manuales',
+          'electricidad-iluminacion': 'grid-electricidad-iluminacion',
+          'adhesivos-selladores': 'grid-adhesivos-selladores',
+          'jardineria': 'grid-jardineria',
+          'construccion': 'grid-construccion'
+        };
+        Object.entries(map).forEach(([cat, gridId]) => {
+          const lista = Array.isArray(data[cat]) ? data[cat].slice(0,3) : [];
+          const gridSel = '#' + gridId;
+          renderProductCards(gridSel, lista, updateCartView);
+        });
+      } catch {}
+    }
+
+    loadProducts();
+
+    if (location.hash) {
+      const id = location.hash.replace('#','');
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
-

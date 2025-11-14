@@ -21,20 +21,22 @@
     import { navLinks } from './assets/js/data/pages.js';
     import { renderNavbar } from './assets/js/components/navbar.js';
     import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+    import { initCategoryPage } from './assets/js/category-page.js';
+    
     requireAuth();
     renderNavbar('#app-header', navLinks);
+    initCart();
+    
     document.getElementById('btnLogout')?.addEventListener('click', (e) => {
       e.preventDefault();
       logout();
     });
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
-    const products = [
-      { id:'JD-001', name:'Manguera 15m reforzada', sku:'JD-001', price:18500, img:'img/Manguera.png' },
-      { id:'JD-002', name:'Pala Tramontina', sku:'JD-002', price:15200, img:'img/Pala.png' },
-      { id:'JD-003', name:'Tijera de podar', sku:'JD-003', price:15500, img:'img/TijeraPoda.png' }
-    ];
-    renderProductCards('#productGrid', products);
+    
+    const products = await initCategoryPage('jardineria');
+    renderProductCards('#productGrid', products, updateCartView);
   </script>
 </body>
 </html>

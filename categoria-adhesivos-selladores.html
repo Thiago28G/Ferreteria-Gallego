@@ -16,20 +16,22 @@
     import { navLinks } from './assets/js/data/pages.js';
     import { renderNavbar } from './assets/js/components/navbar.js';
     import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+    import { initCategoryPage } from './assets/js/category-page.js';
+    
     requireAuth();
     renderNavbar('#app-header', navLinks);
+    initCart();
+    
     document.getElementById('btnLogout')?.addEventListener('click', (e) => {
       e.preventDefault();
       logout();
     });
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
-    const products = [
-      { id:'AD-001', name:'Pegamento universal 250ml', sku:'AD-001', price:6700, img:'img/Pegamento.png' },
-      { id:'AD-002', name:'Silicona transparente 280ml', sku:'AD-002', price:4000, img:'img/Silicona.png' },
-      { id:'AD-003', name:'Espuma PU 750ml', sku:'AD-003', price:14000, img:'img/Espuma.png' }
-    ];
-    renderProductCards('#productGrid', products);
+    
+    const products = await initCategoryPage('adhesivos-selladores');
+    renderProductCards('#productGrid', products, updateCartView);
   </script>
 </body>
 </html>

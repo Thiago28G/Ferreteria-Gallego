@@ -1,0 +1,64 @@
+{
+  "adhesivos-selladores": [
+    {
+      "id": "AD-001",
+      "name": "Pegamento universal 250ml",
+      "sku": "AD-001",
+      "description": "Pegamento multiuso resistente al agua.",
+      "price": 6700,
+      "img": "img/Pegamento.png"
+    },
+    { "id": "AD-002", "name": "Silicona transparente 280ml", "sku": "AD-002", "description": "Ideal para sellado y pegado.", "price": 4000, "img": "img/Silicona.png" },
+    { "id": "AD-003", "name": "Espuma PU 750ml", "sku": "AD-003", "description": "Relleno expansivo de poliuretano.", "price": 14000, "img": "img/Espuma.png" }
+  ],
+  "agua": [
+    { "id": "AP-001", "name": "Caño PVC 110", "sku": "AP-001", "description": "Caño de PVC de 110 mm para desagüe", "price": 21000, "img": "img/cano-pvc-110.png" },
+    { "id": "AP-002", "name": "Grifería de cocina", "sku": "AP-002", "description": "Grifo cromado monocomando", "price": 24990, "img": "img/griferia-de-cocina.png" },
+    { "id": "AP-003", "name": "Bomba centrífuga ½hp", "sku": "AP-003", "description": "Bomba para uso doméstico", "price": 69900, "img": "img/bomba-de-agua.png" }
+  ],
+  "herramientas-manuales": [
+    { "id": "HM-001", "name": "Martillo carpintero 16oz", "sku": "HM-001", "description": "Martillo de acero con mango de madera.", "price": 7500, "img": "img/MartilloCarpintero16.png" },
+    { "id": "HM-002", "name": "Llave combinada 10mm", "sku": "HM-002", "description": "Llave fija y estriada combinada.", "price": 5200, "img": "img/LLave10.png" },
+    { "id": "HM-003", "name": "Destornillador plano 6mm", "sku": "HM-003", "description": "Destornillador con mango ergonómico.", "price": 3200, "img": "img/Destornillador6.png" }
+  ],
+  "herramientas-electricas": [
+    { "id": "HE-001", "name": "Taladro percutor 650W", "sku": "HE-001", "description": "Taladro percutor con maletín.", "price": 32900, "img": "img/Taladrop650.png" },
+    { "id": "HE-002", "name": "Sierra circular 1.400W", "sku": "HE-002", "description": "Sierra circular con disco de 7¼ \".", "price": 47900, "img": "img/SierraCircular1400.png" },
+    { "id": "HE-003", "name": "Amoladora angular 750W", "sku": "HE-003", "description": "Amoladora de 115 mm de diámetro.", "price": 25900, "img": "img/AmoladoraAngular750.png" }
+  ],
+  "jardineria": [
+    { "id": "JA-001", "name": "Pala ancha de acero", "sku": "JA-001", "description": "Pala para jardinería y construcción.", "price": 8900, "img": "img/Pala.png" },
+    { "id": "JA-002", "name": "Tijera de poda", "sku": "JA-002", "description": "Tijera de poda con mango antideslizante.", "price": 6500, "img": "img/TijeraPoda.png" },
+    { "id": "JA-003", "name": "Manguera reforzada ½ \" 20 m", "sku": "JA-003", "description": "Manguera con conectores rápidos.", "price": 14990, "img": "img/Manguera.png" }
+  ],
+  "pintura": [
+    { "id": "PI-001", "name": "Esmalte sintético 1L", "sku": "PI-001", "description": "Esmalte sintético para metal y madera.", "price": 10500, "img": "img/Esmalte1L.png" },
+    { "id": "PI-002", "name": "Rodillo 9 \" con bandeja", "sku": "PI-002", "description": "Rodillo de lana sintética con bandeja.", "price": 3900, "img": "img/Rodillo.png" },
+    { "id": "PI-003", "name": "Quimex acrílico 4L", "sku": "PI-003", "description": "Pintura acrílica para interior y exterior.", "price": 29000, "img": "img/Quimex4L.png" }
+  ],
+  "cerrajeria-herrajes": [
+    { "id": "CH-001", "name": "Cerradura PRIVE", "sku": "CH-001", "description": "Cerradura para puerta interior.", "price": 12800, "img": "img/CerraduraPRIVE.png" },
+    { "id": "CH-002", "name": "Bisagra reforzada 4 × 3", "sku": "CH-002", "description": "Bisagra para puertas de madera.", "price": 2600, "img": "img/BisagraReforzada.png" },
+    { "id": "CH-003", "name": "Manija de aluminio", "sku": "CH-003", "description": "Juego de manijas para puerta.", "price": 6500, "img": "img/ManijaAluminio.png" }
+  ],
+  "electricidad-iluminacion": [
+    { "id": "EL-001", "name": "Disyuntor 25A", "sku": "EL-001", "description": "Disyuntor diferencial bipolar.", "price": 9800, "img": "img/Disyuntor25.png" },
+    { "id": "EL-002", "name": "Lámpara LED 12W", "sku": "EL-002", "description": "Lámpara con luz fría.", "price": 800, "img": "img/Lampara12.png" },
+    { "id": "EL-003", "name": "Cable 2×5mm², rollo de 100m", "sku": "EL-003", "description": "Cable unipolar aislado de 5mm².", "price": 46900, "img": "img/Cable25x100.png" }
+  ],
+  "seguridad-higiene": [
+    { "id": "SH-001", "name": "Casco de seguridad", "sku": "SH-001", "description": "Casco de polietileno de alta densidad.", "price": 5600, "img": "img/Casco.png" },
+    { "id": "SH-002", "name": "Guantes de cuero", "sku": "SH-002", "description": "Guantes de cuero para soldador.", "price": 3800, "img": "img/GuantesCuero.png" },
+    { "id": "SH-003", "name": "Matafuego 1kg", "sku": "SH-003", "description": "Matafuego portátil ABC de 1kg.", "price": 16200, "img": "img/Matafuego.png" }
+  ],
+  "tornilleria-fijaciones": [
+    { "id": "TF-001", "name": "Tornillos rosca máquina (set)", "sku": "TF-001", "description": "Set de tornillos rosca máquina de distintos diámetros.", "price": 2800, "img": "img/Tornillos.png" },
+    { "id": "TF-002", "name": "Arandelas planas (set)", "sku": "TF-002", "description": "Set de arandelas planas de acero galvanizado.", "price": 1900, "img": "img/Arandelas.png" },
+    { "id": "TF-003", "name": "Tarugos nylon (set)", "sku": "TF-003", "description": "Set de tarugos de nylon para fijaciones en paredes.", "price": 1500, "img": "img/Tarugos.png" }
+  ],
+  "construccion": [
+    { "id": "CO-001", "name": "Cemento portland 50kg", "sku": "CO-001", "description": "Cemento portland para construcción y albañilería.", "price": 12500, "img": "img/Cemento.png" },
+    { "id": "CO-002", "name": "Ladrillo común x1000", "sku": "CO-002", "description": "Ladrillos comunes para mampostería.", "price": 45000, "img": "img/Ladrillos.png" },
+    { "id": "CO-003", "name": "Pala construcción", "sku": "CO-003", "description": "Pala reforzada con cabo de metal ideal para obras.", "price": 8500, "img": "img/Pala.png" }
+  ]
+}

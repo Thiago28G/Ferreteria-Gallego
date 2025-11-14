@@ -21,20 +21,22 @@
     import { navLinks } from './assets/js/data/pages.js';
     import { renderNavbar } from './assets/js/components/navbar.js';
     import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+    import { initCategoryPage } from './assets/js/category-page.js';
+    
     requireAuth();
     renderNavbar('#app-header', navLinks);
+    initCart();
+    
     document.getElementById('btnLogout')?.addEventListener('click', (e) => {
       e.preventDefault();
       logout();
     });
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
-    const products = [
-      { id:'PT-001', name:'Latex interior 4L', sku:'PT-001', price:35000, img:'img/Quimex4L.png' },
-      { id:'PT-002', name:'Esmalte sintético 1L', sku:'PT-002', price:13500, img:'img/Esmalte1L.png' },
-      { id:'PT-003', name:'Rodillo lana 22cm', sku:'PT-003', price:8000, img:'img/Rodillo.png' }
-    ];
-    renderProductCards('#productGrid', products);
+    
+    const products = await initCategoryPage('pintura');
+    renderProductCards('#productGrid', products, updateCartView);
   </script>
 </body>
 </html>

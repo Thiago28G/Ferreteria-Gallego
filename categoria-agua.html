@@ -21,20 +21,22 @@
     import { navLinks } from './assets/js/data/pages.js';
     import { renderNavbar } from './assets/js/components/navbar.js';
     import { renderProductCards } from './assets/js/components/cards.js';
+    import { initCart, updateCartView } from './assets/js/components/cart.js';
+    import { initCategoryPage } from './assets/js/category-page.js';
+    
     requireAuth();
     renderNavbar('#app-header', navLinks);
+    initCart();
+    
     document.getElementById('btnLogout')?.addEventListener('click', (e) => {
       e.preventDefault();
       logout();
     });
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
-    const products = [
-      { id:'AP-001', name:'Caño PVC 110', sku:'AP-001', price:21000, img:'img/cano-pvc-110.png' },
-      { id:'AP-002', name:'Grifería de cocina', sku:'AP-002', price:24990, img:'img/griferia-de-cocina.png' },
-      { id:'AP-003', name:'Bomba centrífuga 1/2hp', sku:'AP-003', price:69900, img:'img/bomba-de-agua.png' }
-    ];
-    renderProductCards('#productGrid', products);
+    
+    const products = await initCategoryPage('agua');
+    renderProductCards('#productGrid', products, updateCartView);
   </script>
 </body>
 </html>
